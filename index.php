@@ -1,133 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>Cuarto pubnto</title>
+    <title>Cuarto punto</title>
 </head>
-
 <body>
-
-    <section class="container">
+    <div class="container">
         <div class="row justify-content">
-            <div class="col-md-6">
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <h1>Fomulario hombre y mujer</h1>
-                        <div class="card-header">
-                            <form action="controlador.php" method="post">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" id="nombre" name="nombre"><br><br>
-                                <label for="genero">Género:</label> <br><br>
-                                <label for="hombre" class="form-check-label">hombre
-                                    <input class="form-check-input" type="radio" name="genero" id="hombre"
-                                        value="hombre">
-                                </label> <br> <br>
-                                <label for="mujer" class="form-check-label"> mujer
-                                    <input class="form-check-input" type="radio" name="genero" id="mujer" value="mujer">
-                                </label>
-                                </select><br><br>
-                                <input type="submit" value="Enviar" name="enviar">
-                            </form>
-                        </div>
+            <div class="col-6 mx-auto mt-2 ">
+                <div class="card">
+                    <div class="card-header bg-dark">
+                        <h1 class="card-title text-center text-white">Registro Persona</h1>
                     </div>
-                    <section class="container">
-
-                        <!-- tabla -->
-                        <table class="table">
-                            <br>
-                            <thead>
-                                <h2>Cantidad de hombres inscritos</h2>
+                    <div class="card-body">
+                        <form action="controlador.php" method="post" id="form">
+                            <div class="mb-3 d-flex flex-row">
+                                <label for="nombre" class="form-label fs-5 fw-bold me-2">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control ms-4 w-75">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fs-5 fw-bold">Género:</label>
+                                <table class="table table-dark table-hover">
                                 <tr>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">genero</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                // Importamos la carpeta controlador.php para usar el contenido
-                                include_once 'operaciones.php';
-                                $clase = new clase();
-                                $contadorHombre;
-                                //Validamos que exista la sesion para imprimirla
-                                session_start();
-                               //ESTE IF SE UTILIZA PARA HACER LA VALIDACIOM Y QUE NO SALGAN COSITAS NARANJAS AL INICIAR EL CODIGO!
-                                // if (isset($_SESSION['hombre']) && isset($_SESSION['mujer'])) {
-                                    
-                                // }
-                                foreach ($_SESSION['hombre'] as $key) { ?>
-                                    <tr>
-                                        <td>
-                                            <?php echo $key['nombre']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $key['genero']; ?>
-                                        </td>
-                                    <?php } ?>
-
                                     <td>
-
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="genero" id="hombre" value="hombre">
+                                            <label for="hombre" class="form-check-label">Hombre</label>
+                                        </div>
                                     </td>
-
-                                    </td>
-                                <tr>
-
-                            </tbody>
-                        </table>
-                        <div>
-                            <?php echo 'La cantidad de hombres es de: ' .  count($_SESSION['hombre']) ?>
-                        </div>
-                        <table class="table">
-                            <br>
-                            <thead>
-                                <h2>Cantidad de mujeres inscritas</h2>
-                                <tr>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">genero</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                // Importamos la carpeta controlador.php para usar el contenido
-                                include_once 'operaciones.php';
-                                $clase = new clase();
-                                $contadorHombre;
-                                //Validamos que exista la sesion para imprimirla
-                                //recorremos la array para mostrar los items
-                                foreach ($_SESSION['mujer'] as $key) { ?>
-                                    <tr>
-                                        <td>
-                                            <?php echo $key['nombre']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $key['genero']; ?>
-                                        </td>
-                                    <?php } ?>
-                                    <td>
                                 <tr>
-                            </tbody>
-                        </table>
-                        <div>
-                            <?php echo 'La cantidad de mujeres es de: ' . count($_SESSION['mujer']) ?>
-                        </div>
-                        <div>
-                            <?php  
-                                    echo $clase->mostrar();
-                            ?>
-                        </div> 
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="genero" id="mujer" value="mujer">
+                                            <label for="mujer" class="form-check-label">Mujer</label>
+                                        </div>                                        
+                                    </td>
+                                </tr>
+                                </table>
+                            </div>
+                            
+                                <div class="col-12 d-flex" >
+                                    <input type="submit" value="Enviar" id="enviar" name="enviar" class="btn btn-primary me-2 w-100">
+                                    <input type="submit" value="Close" name="Close" class="btn btn-warning w-25 ms-auto">
+                                </div>                                
+                        </form>
+                    </div>
                 </div>
 
+                
+                <section class="container">                   
+                    <table class="table">
+
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Género</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            include_once 'operaciones.php';
+                            $clase = new clase();
+                            session_start();
+                            if (isset($_SESSION['hombre'])) {
+                                foreach ($_SESSION['hombre'] as $key) {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $key['nombre']; ?></td>
+                                        <td><?php echo $key['genero']; ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </tbody>
+                    </table>                  
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Género</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if (isset($_SESSION['mujer'])) {
+                                foreach ($_SESSION['mujer'] as $key) {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $key['nombre']; ?></td>
+                                        <td><?php echo $key['genero']; ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </tbody>
+                    </table>                   
+                        <table class="table table-borderless table-hover">
+                            <tr>
+                                <th class="text-center">
+                                    hombres
+                                </th>
+                                <th class="text-center">
+                                    mujeres
+                                </th>
+                                <th class="text-center" >
+                                    total
+                                </th>                              
+                            </tr>                                                          
+                            
+                            <tr>
+                                <td class="text-center" >
+                                <?php
+                        if (isset($_SESSION['hombre'])) {
+                            echo  count($_SESSION['hombre']);
+                        }
+                        ?>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="text-center">
+                                    <div>
+                                        <?php
+                                        if (isset($_SESSION['mujer'])) {
+                                            echo  count($_SESSION['mujer']);
+                                        }
+                                        ?>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr  >
+                                <td></td>
+                                <td></td>
+                                <td class=" table-dark text-center text-white align-middle fw-bold" >
+                                <div>
+                        <?php
+                        if (isset($_SESSION['hombre'])) {
+                            echo $clase->mostrar();
+                        }
+                        ?>
+                    </div>
+                                </td>
+                            </tr>
+                        </table>                                                                
+                </section>
             </div>
-
         </div>
-
-        </div>
-        </div>
-        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
-
 </html>

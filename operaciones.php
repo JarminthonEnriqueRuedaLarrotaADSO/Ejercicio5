@@ -1,6 +1,7 @@
 <?php
 class clase
 {
+    private $Close;
     private $contadorHombre=0;
     private $contadorMujer=0;
     private $genero; 
@@ -8,6 +9,12 @@ class clase
     public $hombre = 0;
     public $mujer = 0;
     
+    public function setClose($Close){
+        $this->Close = $Close;
+    }
+    public function getClose(){
+        return $this->Close;
+    }
     public function setGenero($genero)
     {
         $this->genero = $genero;
@@ -46,6 +53,11 @@ class clase
     public function getContadorHombre(){
         return $this->contadorHombre;
     }
+    public function cerrarSesion(){
+        if (isset($this->Close)) {
+            session_destroy();
+        }
+    }
     public function validarGenero()
     {
         if (!empty($this->genero)) {
@@ -56,6 +68,9 @@ class clase
                 case 'mujer':
                     echo $this->genero;
                     break;
+                case '';
+                    echo 'seleccione un valor';
+                break;
             }
         }
     }

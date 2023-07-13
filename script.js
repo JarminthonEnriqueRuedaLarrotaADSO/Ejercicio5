@@ -28,6 +28,7 @@ const enviarFormulario = form => {
         e.preventDefault();
         if (input.value == null || input.value == '') {
             alert('Ingrese un nombre');
+            return
         }
         let checkeado = false;
         for (var i = 0; i < checkBoxes.length; i++) {
@@ -39,6 +40,7 @@ const enviarFormulario = form => {
         }    
         if (!checkeado) {
             alert('Seleccione al menos un género');
+            return
         }    
         enviarFormulario(form);
     };    
